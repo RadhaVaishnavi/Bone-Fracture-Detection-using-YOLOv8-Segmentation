@@ -75,6 +75,26 @@ Automated detection and segmentation of bone fractures in X-ray images.
 - **Learning Rate:** 0.001  
 - **Scheduler:** Cosine Annealing  
 - **Early Stopping:** Patience = 15
+### Performance Results
+
+## Test Set Metrics
+
+| Metric         | Box Detection | Mask Segmentation |
+|----------------|---------------|-------------------|
+| **mAP@50**     | 0.734         | 0.722             |
+| **mAP@50-95**  | 0.412         | 0.358             |
+| **Precision**  | 0.849         | 0.852             |
+| **Recall**     | 0.635         | 0.638             |
+
+## Class-wise AP@50
+
+| Class              | Box AP50 | Mask AP50 |
+|--------------------|----------|-----------|
+| elbow positive     | 0.733    | 0.729     |
+| fingers positive   | 0.564    | 0.512     |
+| forearm fracture   | 0.870    | 0.807     |
+| shoulder fracture  | 0.785    | 0.832     |
+| wrist positive     | 0.717    | 0.732     |
 
 ### Data Augmentation
 
@@ -87,24 +107,5 @@ degrees: 5.0
 scale: 0.3
 mosaic: 0.8
 
-## Performance Results
 
-### Test Set Metrics
-
-| Metric         | Box Detection | Mask Segmentation |
-|----------------|---------------|-------------------|
-| **mAP@50**     | 0.734         | 0.722             |
-| **mAP@50-95**  | 0.412         | 0.358             |
-| **Precision**  | 0.849         | 0.852             |
-| **Recall**     | 0.635         | 0.638             |
-
-### Class-wise AP@50
-
-| Class              | Box AP50 | Mask AP50 |
-|--------------------|----------|-----------|
-| elbow positive     | 0.733    | 0.729     |
-| fingers positive   | 0.564    | 0.512     |
-| forearm fracture   | 0.870    | 0.807     |
-| shoulder fracture  | 0.785    | 0.832     |
-| wrist positive     | 0.717    | 0.732     |
 
