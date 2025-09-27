@@ -123,39 +123,13 @@
 | Wrist positive    | 0.717      | 0.732       |
 | **Average**       | **0.734**  | **0.722**   |
 
+<img width="783" height="331" alt="Image" src="https://github.com/user-attachments/assets/ee3a977e-f34d-4370-abd4-e943697a8d63" />
+
+<img width="774" height="454" alt="Image" src="https://github.com/user-attachments/assets/4800e41b-41fe-4ef5-9354-5f9393d2152b" />
 ---
 ## 📁 File Structure
 
-bone_fracture_detection/
-│
-├── 📁 balanced_bone_fracture_dataset/
-│   ├── 📁 train/
-│   │   ├── 📁 images/          # 1,191 training images
-│   │   └── 📁 labels/          # Corresponding YOLO labels
-│   ├── 📁 val/
-│   │   ├── 📁 images/          # 200 validation images
-│   │   └── 📁 labels/          # Corresponding labels
-│   ├── 📁 test/
-│   │   ├── 📁 images/          # 200 test images
-│   │   └── 📁 labels/          # Corresponding labels
-│   └── dataset_optimized.yaml  # Dataset configuration
-│
-├── 📁 runs/
-│   └── 📁 bone_fracture_segmentation_v2/
-│       ├── 📁 weights/
-│       │   ├── best.pt         # Best model weights
-│       │   ├── last.pt         # Last epoch weights
-│       │   └── *.pt            # Checkpoint weights
-│       ├── 📁 train_batch*.jpg # Training batch examples
-│       ├── 📁 val_batch*.jpg   # Validation examples
-│       ├── confusion_matrix.png
-│       ├── results.csv         # Training metrics
-│       ├── events.out.*        # TensorBoard logs
-│       └── args.yaml           # Training arguments
-│
-├── 📄 training_summary.txt
-├── 📄 optimized_training_summary.txt
-└── 📄 bone_fracture_dataset.yaml
+[deepseek_text_20250927_a43d93.txt](https://github.com/user-attachments/files/22575607/deepseek_text_20250927_a43d93.txt)
 
 ## Conclusion
 
