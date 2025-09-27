@@ -1,4 +1,4 @@
-# 🦴 Bone Fracture Detection System - Documentation  
+# 🦴 Bone Fracture Detection using YOLOv8 Segmentation  
 
 ## 📖 Table of Contents  
 - [🎯 Project Overview](#-project-overview)  
@@ -6,11 +6,8 @@
 - [🤖 Model Architecture](#-model-architecture)  
 - [⚙️ Training Configuration](#️-training-configuration)  
 - [📈 Performance Results](#-performance-results)  
-- [🚀 Usage Guide](#-usage-guide)  
 - [📁 File Structure](#-file-structure)  
 - [🔧 Deployment Guide](#-deployment-guide)  
-- [🏥 Clinical Application Guidelines](#-clinical-application-guidelines)  
-- [🔄 Maintenance & Updates](#-maintenance--updates)  
 - [🎉 Conclusion](#-conclusion)  
 
 ---
