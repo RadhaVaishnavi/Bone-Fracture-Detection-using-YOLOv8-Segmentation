@@ -135,7 +135,7 @@
 
 ## Conclusion
 
-Success Metrics:
+**Success Metrics:**
 
 ✅ 72.2% mAP@50 for mask segmentation
 
