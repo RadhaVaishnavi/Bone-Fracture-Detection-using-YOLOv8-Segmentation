@@ -129,7 +129,7 @@
 ---
 ## 📁 File Structure
 
-[deepseek_text_20250927_a43d93.txt](https://github.com/user-attachments/files/22575607/deepseek_text_20250927_a43d93.txt)
+<img width="536" height="723" alt="Image" src="https://github.com/user-attachments/assets/1a1a6c79-debc-4d14-bbd2-4970a54e392f" />
 
 ## Conclusion
 
