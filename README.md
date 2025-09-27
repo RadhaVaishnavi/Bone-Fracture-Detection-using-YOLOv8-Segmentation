@@ -1,111 +1,170 @@
-# Bone Fracture Detection using YOLOv8 Segmentation
-Automated detection and segmentation of bone fractures in X-ray images.
+# 🦴 Bone Fracture Detection System - Documentation  
 
-## Overview
+## 📖 Table of Contents  
+- [🎯 Project Overview](#-project-overview)  
+- [📊 Dataset Information](#-dataset-information)  
+- [🤖 Model Architecture](#-model-architecture)  
+- [⚙️ Training Configuration](#️-training-configuration)  
+- [📈 Performance Results](#-performance-results)  
+- [🚀 Usage Guide](#-usage-guide)  
+- [📁 File Structure](#-file-structure)  
+- [🔧 Deployment Guide](#-deployment-guide)  
+- [🏥 Clinical Application Guidelines](#-clinical-application-guidelines)  
+- [🔄 Maintenance & Updates](#-maintenance--updates)  
+- [🎉 Conclusion](#-conclusion)  
+
+---
+
+## 🎯 Project Overview  
 
 **Project Name:** Bone Fracture Detection using YOLOv8 Segmentation  
-**Objective:** Automatically detect and segment fractures in X-ray images  
-**Model:** YOLOv8s-seg (Instance Segmentation)  
-**Classes:** 6 fracture types
+**Objective:** Automated detection and segmentation of bone fractures in X-ray images  
+**Model Type:** Instance Segmentation (YOLOv8s-seg)  
+**Classes:** 6 types of bone fractures  
+**Status:** ✅ Training Completed Successfully  
 
-## Key Features
+**Key Features**  
+- 🖼️ **Medical Image Analysis:** X-ray fracture detection  
+- 🎯 **Precise Segmentation:** Polygon masks around fractures  
+- ⚡ **Real-time Capable:** Optimized for fast inference  
+- 🏥 **Clinical Application:** Assist radiologists in diagnosis  
 
-- 📷 **Medical Image Analysis:** Processes grayscale X-rays  
-- 🎯 **Precision Segmentation:** Generates polygon masks for fracture regions  
-- ⚡ **Real-time Inference:** Optimized for deployment and fast prediction  
-- 🏥 **Clinical Assistance:** Supports radiologists in diagnosis workflows
+---
 
-## Image Characteristics
+## 📊 Dataset Information  
 
-- **Format:** JPEG / PNG  
-- **Average Size:** 437×503 px  
+**Dataset Statistics**  
+
+| Split       | Images | Labels | Purpose               |
+|-------------|--------|--------|-----------------------|
+| Train       | 1,191  | 1,191  | Model Training        |
+| Validation  | 200    | 200    | Hyperparameter Tuning |
+| Test        | 200    | 200    | Final Evaluation      |
+| **Total**   | 1,591  | 1,591  |                       |
+
+**Class Distribution**  
+
+| Class Name        | Class ID | Training Instances | Description        |
+|-------------------|----------|---------------------|--------------------|
+| Elbow positive    | 0        | ~200                | Elbow fractures    |
+| Fingers positive  | 1        | ~200                | Finger fractures   |
+| Forearm fracture  | 2        | ~200                | Forearm fractures  |
+| Humerus           | 4        | ~200                | Humerus areas      |
+| Shoulder fracture | 5        | ~200                | Shoulder fractures |
+| Wrist positive    | 6        | ~200                | Wrist fractures    |
+
+**Image Characteristics**  
+- **Format:** JPEG/PNG  
+- **Average Size:** 437×503 pixels  
 - **Size Range:** 158×157 to 1660×1305 px  
-- **Color Mode:** Grayscale (X-ray)
+- **Color:** Grayscale (X-ray images)  
 
-## Dataset Information
+---
 
-**Total Images:** 1,591  
-**Annotation Format:** YOLOv8 Segmentation (TXT with polygons)
+## 🤖 Model Architecture  
 
-### Dataset Split
-
-| Split       | Images | Purpose               |
-|-------------|--------|------------------------|
-| Train       | 1,191  | Model training         |
-| Validation  | 200    | Hyperparameter tuning  |
-| Test        | 200    | Final evaluation       |
-
-### Class Distribution
-
-| Class Name         | ID  | Approx. Count | Description         |
-|--------------------|-----|---------------|---------------------|
-| elbow positive     | 0   | ~200          | Elbow fractures     |
-| fingers positive   | 1   | ~200          | Finger fractures    |
-| forearm fracture   | 2   | ~200          | Forearm fractures   |
-| humerus            | 4   | ~200          | Humerus bone region |
-| shoulder fracture  | 5   | ~200          | Shoulder fractures  |
-| wrist positive     | 6   | ~200          | Wrist fractures     |
-
-## Model Architecture
-
-- **Model:** YOLOv8s-seg  
+**YOLOv8s-seg Specifications**  
+- **Model:** YOLOv8s-seg (Small version)  
 - **Parameters:** 11.79M  
-- **Layers:** 151  
 - **GFLOPs:** 39.9  
-- **Input Size:** 640×640 px  
+- **Layers:** 151  
+- **Input Size:** 640×640  
 
-### Architecture Components
+**Architecture Components**  
+- **Backbone:** CSPDarknet with cross-stage partial connections  
+- **Neck:** PANet (Path Aggregation Network)  
+- **Head:** Segmentation head with mask prediction  
 
-- **Backbone:** CSPDarknet  
-- **Neck:** PANet  
-- **Head:** Segmentation head with polygon mask output  
+**Loss Functions:**  
+- Box Loss: CIoU  
+- Segmentation Loss: Binary Cross-Entropy  
+- Classification Loss: Focal Loss  
 
-### Loss Functions
+---
 
-- CIoU Loss (bounding boxes)  
-- BCE Loss (segmentation masks)  
-- Focal Loss (classification)
+## ⚙️ Training Configuration  
 
-## Training Configuration
+**Hyperparameters**  
+- Epochs: 50  
+- Batch Size: 16  
+- Image Size: 640  
+- Optimizer: AdamW  
+- Learning Rate: 0.001  
+- LR Scheduler: Cosine annealing  
+- Early Stopping: Patience = 15  
 
-- **Epochs:** 50  
-- **Batch Size:** 16  
-- **Image Size:** 640  
-- **Optimizer:** AdamW  
-- **Learning Rate:** 0.001  
-- **Scheduler:** Cosine Annealing  
-- **Early Stopping:** Patience = 15
-### Performance Results
+**Data Augmentation**  
+- HSV Hue: 0.015  
+- HSV Saturation: 0.5  
+- HSV Value: 0.3  
+- Flip (Horizontal): 0.3  
+- Rotation: 5°  
+- Scale: 0.3  
+- Mosaic: 0.8  
 
-## Test Set Metrics
+---
 
-| Metric         | Box Detection | Mask Segmentation |
-|----------------|---------------|-------------------|
-| **mAP@50**     | 0.734         | 0.722             |
-| **mAP@50-95**  | 0.412         | 0.358             |
-| **Precision**  | 0.849         | 0.852             |
-| **Recall**     | 0.635         | 0.638             |
+## 📈 Performance Results  
 
-## Class-wise AP@50
+**Final Evaluation Metrics (Test Set)**  
 
-| Class              | Box AP50 | Mask AP50 |
-|--------------------|----------|-----------|
-| elbow positive     | 0.733    | 0.729     |
-| fingers positive   | 0.564    | 0.512     |
-| forearm fracture   | 0.870    | 0.807     |
-| shoulder fracture  | 0.785    | 0.832     |
-| wrist positive     | 0.717    | 0.732     |
+| Metric          | Box Detection | Mask Segmentation |
+|-----------------|---------------|-------------------|
+| mAP@50          | 0.734         | 0.722             |
+| mAP@50-95       | 0.412         | 0.358             |
+| Precision       | 0.849         | 0.852             |
+| Recall          | 0.635         | 0.638             |
 
-### Data Augmentation
+**Class-wise Performance**  
 
-```yaml
-hsv_h: 0.015
-hsv_s: 0.5
-hsv_v: 0.3
-fliplr: 0.3
-degrees: 5.0
-scale: 0.3
-mosaic: 0.8
+| Class             | AP50 (Box) | AP50 (Mask) |
+|-------------------|------------|-------------|
+| Elbow positive    | 0.733      | 0.729       |
+| Fingers positive  | 0.564      | 0.512       |
+| Forearm fracture  | 0.870      | 0.807       |
+| Shoulder fracture | 0.785      | 0.832       |
+| Wrist positive    | 0.717      | 0.732       |
+| **Average**       | **0.734**  | **0.722**   |
 
+---
+## 📁 File Structure
+
+bone_fracture_detection/
+│
+├── 📁 balanced_bone_fracture_dataset/
+│   ├── 📁 train/
+│   │   ├── 📁 images/          # 1,191 training images
+│   │   └── 📁 labels/          # Corresponding YOLO labels
+│   ├── 📁 val/
+│   │   ├── 📁 images/          # 200 validation images
+│   │   └── 📁 labels/          # Corresponding labels
+│   ├── 📁 test/
+│   │   ├── 📁 images/          # 200 test images
+│   │   └── 📁 labels/          # Corresponding labels
+│   └── dataset_optimized.yaml  # Dataset configuration
+│
+├── 📁 runs/
+│   └── 📁 bone_fracture_segmentation_v2/
+│       ├── 📁 weights/
+│       │   ├── best.pt         # Best model weights
+│       │   ├── last.pt         # Last epoch weights
+│       │   └── *.pt            # Checkpoint weights
+│       ├── 📁 train_batch*.jpg # Training batch examples
+│       ├── 📁 val_batch*.jpg   # Validation examples
+│       ├── confusion_matrix.png
+│       ├── results.csv         # Training metrics
+│       ├── events.out.*        # TensorBoard logs
+│       └── args.yaml           # Training arguments
+│
+├── 📄 training_summary.txt
+├── 📄 optimized_training_summary.txt
+└── 📄 bone_fracture_dataset.yaml
+
+## Conclusion
+
+Success Metrics:
+✅ 72.2% mAP@50 for mask segmentation
+✅ 6 fracture types detected
+✅ Real-time inference supported
 
 
