@@ -1,11 +1,14 @@
 # Bone-Fracture-Detection-using-YOLOv8-Segmentation
 Automated detection and segmentation of bone fractures in X-ray images
 # Overview
-**Project Name**: Bone Fracture Detection using YOLOv8 Segmentation
+**Project Name:** Bone Fracture Detection using YOLOv8 Segmentation
+
 **Objective:** Automatically detect and segment fractures in X-ray images.
-Model: YOLOv8s-seg (Instance Segmentation)
-Classes: 6 fracture types
-Status: ✅ Training Completed Successfully
+
+**Model:** YOLOv8s-seg (Instance Segmentation)
+
+**Classes:** 6 fracture types
+
 
 Key Features
 
