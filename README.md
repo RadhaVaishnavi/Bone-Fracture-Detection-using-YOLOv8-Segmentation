@@ -161,7 +161,9 @@ bone_fracture_detection/
 
 Success Metrics:
 ✅ 72.2% mAP@50 for mask segmentation
+
 ✅ 6 fracture types detected
+
 ✅ Real-time inference supported
 
 
