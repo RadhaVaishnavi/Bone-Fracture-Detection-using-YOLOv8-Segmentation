@@ -82,13 +82,13 @@
 ## ⚙️ Training Configuration  
 
 **Hyperparameters**  
-- Epochs: 50  
+- Epochs: 70  
 - Batch Size: 16  
 - Image Size: 640  
 - Optimizer: AdamW  
-- Learning Rate: 0.001  
+- Learning Rate: 0.005  
 - LR Scheduler: Cosine annealing  
-- Early Stopping: Patience = 15  
+- Early Stopping: Patience = 25  
 
 **Data Augmentation**  
 - HSV Hue: 0.015  
