@@ -141,10 +141,15 @@
 
 **Success Metrics:**
 
-✅ 72.2% mAP@50 for mask segmentation
+✅ 93.1% confidence
+
+✅ 79.6% mAP50
+
+✅ 68.4% recall 
+
+✅ 84.1% precision
 
 ✅ 6 fracture types detected
 
-✅ Real-time inference supported
 
 
